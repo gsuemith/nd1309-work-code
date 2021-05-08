@@ -30,3 +30,10 @@ class Blockchain{
     this.chain.push(newBlock);
   }
 }
+
+const bc = new Blockchain()
+const blk = new Block("Hello Block Chain!")
+
+bc.addBlock(blk)
+
+console.log(bc)
