@@ -10,7 +10,7 @@ class Block{
    
     this.body = data
     this.time = 0
-    this.previousblockhash = ""
+    this.previousBlockHash = ""
   }
 }
 
@@ -23,6 +23,9 @@ class Blockchain{
   }
 
   addBlock(newBlock){
+    newBlock.height = this.chain.length;
+    newBlock.time = new Date().getTime().toString().slice(0,-3);
+
     if(this.chain.length > 0){
       newBlock.previousBlockHash = this.chain[this.chain.length-1].hash;
     }
@@ -34,6 +37,7 @@ class Blockchain{
 const bc = new Blockchain()
 const blk = new Block("Hello Block Chain!")
 
-bc.addBlock(blk)
 
+bc.addBlock(blk)
+bc.addBlock(new Block("block 2"))
 console.log(bc)
